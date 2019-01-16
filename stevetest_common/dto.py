@@ -4,12 +4,12 @@ that could be used throughout the layers.
 
 """
 
-__author__ = "Gil"
+__author__ = "Steve"
 __status__ = "production"
 __version__ = "0.1"
-__date__ = "April 2018"
+__date__ = "Jan 2019"
 
-from common import const
+from stevetest_common import const
 import decimal
 
 
@@ -331,4 +331,11 @@ class Prediction(object):
     def get_rule_lv3_score(self):
         return self.rule_lv3_score
 
-
+    def __str__(self,print_all=True):
+        if print_all:
+            return " ".join(str(item) for item in (
+                self.product_id,self.item_id,self.predict_type,self.ml_lv1_catecode,str(self.ml_lv1_score),self.rule_lv1_catecode,
+                str(self.rule_lv1_score),self.ml_lv2_catecode,str(self.ml_lv2_score),self.rule_lv2_catecode,str(self.rule_lv2_score),
+                self.ml_lv3_catecode_chunk,str(self.ml_lv3_score),self.rule_lv3_catecode_chunk,str(self.rule_lv3_score)))
+        else:
+            return self.item_id
