@@ -1,5 +1,6 @@
 import const
 import re
+from pyspark import SparkFiles
 
 
 def manual_rule_lv1(input_str):
@@ -19,37 +20,37 @@ def manual_rule_lv1(input_str):
 
 
 class Rules(object):
-    with open(const.get_sports_brand_file_name()) as f:
+    with open(SparkFiles.get(const.get_sports_brand_file_name()),encoding='utf-8') as f:
         sports_brand_dictionary = f.readlines()
 
     sports_brand_dictionary = [x.strip() for x in sports_brand_dictionary]
     sports_brand_dictionary.sort(key=lambda item: (-len(item), item))
 
-    with open(const.get_sports_definite_keyword_file_name()) as f:
+    with open(SparkFiles.get(const.get_sports_definite_keyword_file_name()),encoding='utf-8') as f:
         sports_definite_keyword_dictionary = f.readlines()
 
     sports_definite_keyword_dictionary = [x.strip() for x in sports_definite_keyword_dictionary]
     sports_definite_keyword_dictionary.sort(key=lambda item: (-len(item), item))
 
-    with open(const.get_book_keyword_file_name()) as f:
+    with open(SparkFiles.get(const.get_book_keyword_file_name()),encoding='utf-8') as f:
         book_keyword_dictionary = f.readlines()
 
     book_keyword_dictionary = [x.strip() for x in book_keyword_dictionary]
     book_keyword_dictionary.sort(key=lambda item: (-len(item), item))
 
-    with open(const.get_book_definite_keyword_file_name()) as f:
+    with open(SparkFiles.get(const.get_book_definite_keyword_file_name()),encoding='utf-8') as f:
         book_definite_keyword_dictionary = f.readlines()
 
     book_definite_keyword_dictionary = [x.strip() for x in book_definite_keyword_dictionary]
     book_definite_keyword_dictionary.sort(key=lambda item: (-len(item), item))
 
-    with open(const.get_fashion_definite_keyword_file_name()) as f:
+    with open(SparkFiles.get(const.get_fashion_definite_keyword_file_name()),encoding='utf-8') as f:
         fashion_definite_keyword_dictionary = f.readlines()
 
     fashion_definite_keyword_dictionary = [x.strip() for x in fashion_definite_keyword_dictionary]
     fashion_definite_keyword_dictionary.sort(key=lambda item: (-len(item), item))
 
-    with open(const.get_fashion_keyword_file_name()) as f:
+    with open(SparkFiles.get(const.get_fashion_keyword_file_name()),encoding='utf-8') as f:
         fashion_keyword_dictionary = f.readlines()
 
     fashion_keyword_dictionary = [x.strip() for x in fashion_keyword_dictionary]

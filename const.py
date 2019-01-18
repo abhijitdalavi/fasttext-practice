@@ -349,9 +349,7 @@ def get_model_file_exist(sub_file_directory, level, cate=None):
 
 
 def get_dictionary_file_path():
-
-    file_path = get_data_file_path() + "dictionary/"
-    return file_path
+    return ""
 
 
 def get_feedback_file_path():

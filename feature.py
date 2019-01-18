@@ -15,6 +15,8 @@ from collections import OrderedDict
 from pyspark import SparkFiles
 import random
 import logging
+import sys
+sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf8', buffering=1)
 
 FORMAT = const.LOG_MSG_FORMAT
 logging.basicConfig(format=FORMAT, datefmt=const.LOG_DATE_FORMAT)
@@ -25,13 +27,13 @@ logger.setLevel(logging.INFO)
 
 class Dictionary(object):
     automaton = Automaton()
-    with open(SparkFiles.get('dict_token.txt')) as f:
+    with open(SparkFiles.get('dict_token.txt'), encoding='utf-8') as f:
         token_dict = f.read().split()
 
     token_dictionary = [x.strip() for x in token_dict]
     automaton.add_all(token_dictionary)
 
-    with open(SparkFiles.get('dict_garbage.txt')) as f:
+    with open(SparkFiles.get('dict_garbage.txt'), encoding='utf-8') as f:
         garbage_dict = f.readlines()
 
     garbage_dictionary = [x.strip() for x in garbage_dict]
